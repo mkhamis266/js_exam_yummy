@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="./imgs/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/all.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+    <title>Yummy</title>
+  </head>
+  <body>
+    <div class="side-menu">
+      <div class="menu-body">
+        <div class="links-container">
+          <ul class="links-list">
+            <li onclick="showSearchInputs()">Search</li>
+            <li onclick="loadCategories()">Categories</li>
+            <li onclick="loadArea()">Area</li>
+            <li onclick="loadIngredients()">Ingredients</li>
+            <li onclick="showContacts()">Contact Us</li>
+          </ul>
+        </div>
+        <div class="menu-footer">
+          <div class="icons">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <div class="footer">
+            <p>Copyright Â© 2019 All Rights <br />Reserved.</p>
+          </div>
+        </div>
+      </div>
+      <div class="menu-head">
+        <img class="logo" src="imgs/logo.png" width="50" alt="" srcset="" />
+        <i id="sideMenuButton" class="fa-solid fa-2x fa-align-justify"></i>
+        <di>
+          <i class="fa-solid fa-globe d-block"></i>
+          <i class="fa-solid fa-share-nodes"></i>
+        </di>
+      </div>
+    </div>
+    <div id="content">
+      <div id="searchContainer" class="w-75 mx-auto"></div>
+      <div id="mainContent" class="position-relative">
+        <div class="loading-screen">
+          <i class="fa fa-spinner fa-spin fa-5x"></i>
+        </div>
+        <div class="container">
+          <div class="data row p-3"></div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/jquery.validate.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
