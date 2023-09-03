@@ -367,7 +367,6 @@ function displayMealDetails(meal) {
   }
 
   let tags = meal.strTags?.split(",");
-  // let tags = meal.strTags.split(",")
   if (!tags) tags = [];
 
   let tagsStr = "";
