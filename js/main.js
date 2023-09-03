@@ -15,41 +15,48 @@ $().ready(() => {
   searchByName("").then(() => {});
 });
 
-$("#sideMenuButton").on("click", toggleSideMenu);
-function toggleSideMenu() {
+$("#sideMenuButton").on("click", function () {
   if ($("#sideMenuButton").hasClass("fa-align-justify")) {
-    $(".side-menu").animate({ left: 0 }, 500);
-    $("#sideMenuButton").removeClass("fa-align-justify");
-    $("#sideMenuButton").addClass("fa-x");
-    for (let i = 0; i < 5; i++) {
-      $(".links-list li")
-        .eq(i)
-        .animate(
-          {
-            top: 0,
-          },
-          (i + 5) * 100
-        );
-    }
+    openSideMenu();
   } else {
-    let menuWidth = $(".menu-body").outerWidth();
+    closeSideMenu();
+  }
+});
 
-    $(".side-menu").animate({ left: -menuWidth }, 500);
-    $("#sideMenuButton").addClass("fa-align-justify");
-    $("#sideMenuButton").removeClass("fa-x");
+function closeSideMenu() {
+  let menuWidth = $(".menu-body").outerWidth();
 
-    $(".links-list li").animate(
-      {
-        top: 300,
-      },
-      500
-    );
+  $(".side-menu").animate({ left: -menuWidth }, 500);
+  $("#sideMenuButton").addClass("fa-align-justify");
+  $("#sideMenuButton").removeClass("fa-x");
+
+  $(".links-list li").animate(
+    {
+      top: 300,
+    },
+    500
+  );
+}
+function openSideMenu() {
+  $(".side-menu").animate({ left: 0 }, 500);
+  $("#sideMenuButton").removeClass("fa-align-justify");
+  $("#sideMenuButton").addClass("fa-x");
+  for (let i = 0; i < 5; i++) {
+    $(".links-list li")
+      .eq(i)
+      .animate(
+        {
+          top: 0,
+        },
+        (i + 5) * 100
+      );
   }
 }
 
 $(".links-list li").on("click", toggleSideMenu);
 
 function showSearchInputs() {
+  closeSideMenu();
   $("#searchContainer").html(`
     <div class="container-fluid">
       <div class="row py-4 ">
@@ -87,8 +94,9 @@ async function searchByFLetter(term) {
   response.meals ? showMeals(response.meals) : showMeals([]);
   $(".loading-screen").fadeOut(300);
 }
-/*  */
+
 function showMeals(meals) {
+  closeSideMenu();
   $(".data").html("");
   if (meals.length > 20) {
     meals = meals.slice(0, 20);
@@ -121,6 +129,7 @@ async function loadCategories() {
 }
 
 function showCategories(categories) {
+  closeSideMenu();
   $(".data").html("");
   categories.forEach((category) => {
     let categoryElement = $("<div/>", {
@@ -151,6 +160,7 @@ async function loadArea() {
 }
 
 function showAreas(areas) {
+  closeSideMenu();
   $(".data").html("");
   console.log(areas);
   areas.forEach((area) => {
@@ -179,6 +189,7 @@ async function loadIngredients() {
 }
 
 function showIngredients(ingredients) {
+  closeSideMenu();
   $(".data").html("");
   ingredients.forEach((ingredient) => {
     let categoryElement = $("<div/>", {
@@ -196,6 +207,7 @@ function showIngredients(ingredients) {
 }
 
 function showContacts() {
+  closeSideMenu();
   $("#searchContainer").html("");
   $(".data").html(`
   <div class="contact min-vh-100 d-flex justify-content-center align-items-center">
@@ -295,6 +307,7 @@ function showContacts() {
 }
 
 async function getCategoryMeals(category) {
+  closeSideMenu();
   $(".data").html("");
   $(".loading-screen").fadeIn(300);
 
@@ -306,6 +319,7 @@ async function getCategoryMeals(category) {
 }
 
 async function getAreaMeals(area) {
+  closeSideMenu();
   $(".data").html("");
   $(".loading-screen").fadeIn(300);
 
@@ -317,6 +331,7 @@ async function getAreaMeals(area) {
 }
 
 async function getIngredientsMeals(ingredients) {
+  closeSideMenu();
   $(".data").html("");
   $(".loading-screen").fadeIn(300);
 
@@ -328,6 +343,7 @@ async function getIngredientsMeals(ingredients) {
 }
 
 async function getMealDetails(mealID) {
+  closeSideMenu();
   $(".data").html("");
   $(".loading-screen").fadeIn(300);
 
@@ -340,8 +356,8 @@ async function getMealDetails(mealID) {
 }
 
 function displayMealDetails(meal) {
+  closeSideMenu();
   $("#searchContainer").html("");
-
   let ingredients = ``;
 
   for (let i = 1; i <= 20; i++) {
